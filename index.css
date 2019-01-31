@@ -1,0 +1,217 @@
+:root {
+  --line-color: #222;
+  --line-thickness: 1px;
+  --note: 10px;
+  --note-border-color: #222;
+  --note-border-color-hover: lightblue;
+  --note-border-width: 2px;
+  --note-color: #222;
+  --note-half: calc(var(--note) / 2);
+  --note-muted-color: #222;
+  --note-open-border-color: #222;
+  --note-open-color: #fff;
+  --note-pos-0: calc((var(--size) * 0) - (var(--note-half)));
+  --note-pos-1: calc((var(--size) * 1) - 12px);
+  --note-pos-2: calc((var(--size) * 2) - 8px);
+  --note-pos-3: calc((var(--size) * 3) - 4px);
+  --note-pos-4: calc((var(--size) * 4));
+  --note-pos-5: calc((var(--size) * 5) + 4px);
+  --note-pos-6: calc((var(--size) * 6) + 8px);
+  --nut-width: 2px;
+  --size: calc(100% / 6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 10px;
+  font-family: 'Georgia';
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin: 20px;
+  margin: 20px;
+  padding: 15px 20px 10px 20px;
+  border: 1px solid #ddd;
+  border-bottom-width: 5px;
+  border-radius: 5px;
+}
+
+.label {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.position-label {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* .chord-chart:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+} */
+
+.chord-chart {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  transition: all 100ms ease-in-out;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.chord-chart.o {
+  border-left: var(--nut-width) solid var(--line-color);
+}
+
+.strings,
+.frets {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.str,
+.fret {
+  position: absolute;
+  background-color: var(--line-color);
+}
+
+.strings .str {
+  height: var(--line-thickness);
+  left: 0;
+  right: 0;
+}
+
+.strings .str.str-1 {
+  top: 0;
+}
+
+.strings .str.str-2 {
+  top: calc((100% / 5) * 1);
+}
+
+.strings .str.str-3 {
+  top: calc((100% / 5) * 2);
+}
+
+.strings .str.str-4 {
+  top: calc((100% / 5) * 3);
+}
+
+.strings .str.str-5 {
+  top: calc((100% / 5) * 4);
+}
+
+.strings .str.str-6 {
+  top: calc(100% - 1px);
+}
+
+.frets .fret {
+  width: var(--line-thickness);
+  top: 0;
+  bottom: 0;
+}
+
+.frets .fret:nth-child(0) {
+  left: 0;
+}
+
+.frets .fret:nth-child(1) {
+  left: calc((100% / 5) * 1);
+}
+
+.frets .fret:nth-child(2) {
+  left: calc((100% / 5) * 2);
+}
+
+.frets .fret:nth-child(3) {
+  left: calc((100% / 5) * 3);
+}
+
+.frets .fret:nth-child(4) {
+  left: calc((100% / 5) * 4);
+}
+
+.frets .fret:nth-child(5) {
+  left: 100%;
+}
+
+.note {
+  position: absolute;
+  height: var(--note);
+  width: var(--note);
+  border: var(--note-border-width) solid var(--note-border-color);
+  top: calc(var(--note-half) * -1);
+  border-radius: 50%;
+  background-color: var(--note-color);
+  z-index: 1;
+  transition: 100ms all ease-in-out;
+  
+}
+
+.note:hover {
+  border: var(--note-border-width) solid var(--note-border-color-hover);
+  transform: scale(1.4);
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.2);
+}
+
+.chord-chart.o .note.pos-0 {
+  background-color: var(--note-open-color);
+  border: 2px solid var(--note-open-border-color);
+}
+
+.chord-chart .note.pos-0.x {
+  background: transparent;
+  border: none;
+}
+
+.chord-chart .note.pos-0.x:after {
+  position: absolute;
+  display: inline-block;
+  content: '\2718';
+  top: -5px;
+  left: -2px;
+  font-size: 20px;
+  color: var(--note-muted-color);
+}
+
+.note.pos-0 {
+  left: var(--note-pos-0);
+}
+
+.note.pos-1 {
+  left: var(--note-pos-1);
+}
+
+.note.pos-2 {
+  left: var(--note-pos-2);
+}
+
+.note.pos-3 {
+  left: var(--note-pos-3);
+}
+
+.note.pos-4 {
+  left: var(--note-pos-4);
+}
+
+.note.pos-5 {
+  left: var(--note-pos-5);
+}
+
+.note.pos-6 {
+  left: var(--note-pos-6);
+}
